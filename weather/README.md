@@ -21,9 +21,10 @@ For the object store, we will use MinIO.
 ### Dependencies
 
 1. [Python][url-python] + [pyenv][url-pyenv] (Note: This project uses Python 3.10)
-2. [requests][url-requests] Python library
-3. [pandas][url-pandas] Python library
-4. Weather API from [Open-Meteo][url-open-meteo]
+1. [Python venv][url-venv] - Python virtual environment
+1. [requests][url-requests] - Python library
+1. [pandas][url-pandas] - Python library
+1. Weather API from [Open-Meteo][url-open-meteo]
 
 
 ### Setup
@@ -64,6 +65,7 @@ Open-Meteo is an open-source weather API and offers free access for non-commerci
 [url-config-locations]: /weather/config/locations.json "Locations to download the weather information of"
 [url-python]: https://www.python.org/
 [url-pyenv]: https://github.com/pyenv/pyenv
+[url-venv]: https://docs.python.org/3/library/venv.html
 [url-requests]: https://pypi.org/project/requests/
 [url-pandas]: https://pandas.pydata.org/
 [url-dotenv-sample]: /weather/.env.sample
