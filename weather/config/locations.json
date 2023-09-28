@@ -1,0 +1,74 @@
+[
+  {
+    "name": "Ara Damansara LRT Station",
+    "country": "Malaysia",
+    "latitude": "3.1035541",
+    "longitude": "101.581654"
+  },
+  {
+    "name": "Gramedia Medan",
+    "country": "Indonesia",
+    "latitude": "3.584513",
+    "longitude": "98.6633783"
+  },
+  {
+    "name": "Purdue Mall",
+    "country": "USA",
+    "latitude": "40.4283682",
+    "longitude": "-86.914704"
+  },
+  {
+    "name": "Monas",
+    "country": "Indonesia",
+    "latitude": "-6.175403",
+    "longitude": "106.8245787"
+  },
+  {
+    "name": "Petronas Twin Towers",
+    "country": "Malaysia",
+    "latitude": "3.1569935",
+    "longitude": "101.7090948"
+  },
+  {
+    "name": "Sydney Opera House",
+    "country": "Australia",
+    "latitude": "-33.8567799",
+    "longitude": "151.2127164"
+  },
+  {
+    "name": "De Gooyer Molen",
+    "country": "Netherlands",
+    "latitude": "52.3668478",
+    "longitude": "4.7863289"
+  },
+  {
+    "name": "Osaka Castle",
+    "country": "Japan",
+    "latitude": "34.6777114",
+    "longitude": "135.4034645"
+  },
+  {
+    "name": "Death Valley National Park",
+    "country": "USA",
+    "latitude": "36.5913807",
+    "longitude": "-117.2252684"
+  },
+  {
+    "name": "Palace of Fine Arts",
+    "country": "USA",
+    "latitude": "37.8020752",
+    "longitude": "-122.4500478"
+  },
+  {
+    "name": "Lisbon Oceanarium",
+    "country": "Portugal",
+    "latitude": "38.7635435",
+    "longitude": "-9.0937415"
+  },
+  {
+    "name": "Fonimagoodhoo",
+    "country": "Maldives",
+    "latitude": "5.2549395",
+    "longitude": "73.1634629"
+  }
+]
