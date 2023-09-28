@@ -30,6 +30,10 @@ if __name__ == '__main__':
     weather_data = requests.get(url)
     weather_json = weather_data.json()
 
+    # Add the location name and country for reference
+    weather_json['location_name'] = loc['name']
+    weather_json['location_country'] = loc['country']
+
     # Read the data into Panda's data frame
     part1 = { d: weather_json[d] for d in weather_json if d not in { 'hourly' }}
 
