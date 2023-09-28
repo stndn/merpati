@@ -2,8 +2,8 @@ import os
 import json
 import requests
 import pandas as pd
-from lib import configurator
-from lib import helper
+from libs import configurator
+from libs import helper
 
 
 if __name__ == '__main__':
