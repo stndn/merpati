@@ -61,7 +61,7 @@ Open-Meteo is an open-source weather API and offers free access for non-commerci
 <!-- Links -->
 [url-open-meteo]: https://open-meteo.com/ "Open Meteo: The open-source weather API"
 [url-garudata]: https://github.com/stndn/garudata "Garudata - The data platform project"
-[url-config-locations]: /weather/config/locations.py "Locations to download the weather information of"
+[url-config-locations]: /weather/config/locations.json "Locations to download the weather information of"
 [url-python]: https://www.python.org/
 [url-pyenv]: https://github.com/pyenv/pyenv
 [url-requests]: https://pypi.org/project/requests/
