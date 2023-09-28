@@ -10,7 +10,7 @@ It is built upon simple components where data may be downloaded, generated, and 
 
 
 The weather component consists of two modules:
-1. Get-weather: Integrates with Open-Meteo's API using Python's `requests` to download weather information for locations defined in [config/locations.py][url-config-locations].
+1. Get-weather: Integrates with Open-Meteo's API using Python's `requests` to download weather information for locations defined in [config/locations.json][url-config-locations].
 2. Save-weather: Stores the retrieved weather information into object store
 
 For the object store, we will use MinIO.
