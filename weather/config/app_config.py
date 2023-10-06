@@ -19,7 +19,8 @@ class Config(object):
                             "timezone=auto&forecast_days=3"
                            )
 
-  output_path = os.path.abspath(os.path.join(APP_PATH, 'output/'))
+  output_path   = os.path.abspath(os.path.join(APP_PATH, 'output/'))
+  archive_path  = os.path.abspath(os.path.join(APP_PATH, 'archive/'))
 
   outfile_prefix = strftime("%Y%m%d_%H%M%S", gmtime())
 

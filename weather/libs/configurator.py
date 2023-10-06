@@ -63,3 +63,17 @@ def load_locations(location_file:str) -> list:
     return locations
 
 
+"""
+Initialize MinIO configuration
+
+Return
+  Dictionary of MinIO configuration
+"""
+def init_minio_config() -> dict:
+  return {  'url'           : os.getenv('MINIO_URL', None),
+            'access_key'    : os.getenv('MINIO_ACCESS_KEY', None),
+            'secret_key'    : os.getenv('MINIO_SECRET_KEY', None),
+            'bucket_w_in'   : os.getenv('MINIO_BUCKET_W_IN', None),
+            'bucket_w_out'  : os.getenv('MINIO_BUCKET_W_OUT', None),
+         }
+
