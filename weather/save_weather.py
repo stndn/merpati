@@ -49,7 +49,11 @@ if __name__ == '__main__':
 
       # Move processed file to archive
       if result.object_name == f_basic:
-        shutil.move(f, cfg.archive_path)
+        # Create archive directory based on file's date
+        py, pm, pd = f_basic[0:4], f_basic[4:6], f_basic[6:8]
+        target_path = os.path.join(cfg.archive_path, py, pm, pd)
+        helper.make_sure_path_exists(target_path)
+        shutil.move(f, target_path)
 
     output = { 'total_processed': files_count,
                'target_bucket': minio_cfg['bucket_w_in'] }
