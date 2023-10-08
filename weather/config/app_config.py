@@ -1,7 +1,7 @@
 # Application configuration
 
 import os
-from time import gmtime, strftime
+from time import localtime, strftime
 
 class Config(object):
   DEBUG = False
@@ -22,7 +22,7 @@ class Config(object):
   output_path   = os.path.abspath(os.path.join(APP_PATH, 'output/'))
   archive_path  = os.path.abspath(os.path.join(APP_PATH, 'archive/'))
 
-  outfile_prefix = strftime("%Y%m%d_%H%M%S", gmtime())
+  outfile_suffix = strftime("%Y%m%dT%H%M%S", localtime())
 
 
 class Development(Config):
