@@ -13,7 +13,7 @@ if __name__ == '__main__':
 
   # Initialize all configurations
   cfg = configurator.init_config()
-  log = configurator.init_logger(name='log_app',
+  log = configurator.init_logger(name='save_weather',
                                log_path=os.path.join(cfg.APP_PATH, 'logs')
                               )
   minio_cfg = configurator.init_minio_config()
@@ -21,28 +21,31 @@ if __name__ == '__main__':
 
   files_list = []
 
-  # Get the list of files to be uploaded. We only need the Parquet files
+  # Get the list of files to be uploaded. We only process Parquet and JSON files
   for f in os.listdir(cfg.output_path):
-    if f.endswith(".parquet"):
-      # Prints only text file present in My Folder
+    if f.endswith(".parquet") or f.endswith(".json"):
       files_list.append(os.path.join(cfg.output_path, f))
 
-  files_count = len(files_list)
-  log.info("Count of Parquet files to save: {}".format(files_count))
+
+  total_files = len(files_list)
+  log.info("Count of files to save: {}".format(total_files))
 
 
   # Process the files if any
-  if files_count:
+  if total_files:
     # Connect to S3 bucket
     client = Minio(minio_cfg['url'], minio_cfg['access_key'], minio_cfg['secret_key'])
     tags = Tags(for_object=True)
-    tags["Content"] = "weather data"
+    tags["Content"] = "Weather data"
 
     for f in files_list:
       f_basic = os.path.basename(f)
-      result = client.fput_object(minio_cfg['bucket_w_in'], f_basic, f,
-                                  tags=tags,
-                                 )
+      w, lat, long, ts  = f_basic.split('_')
+      tags['latitude']  = lat
+      tags['longitude'] = long
+      tags['timestamp'] = ts.split('.')[0]
+
+      result = client.fput_object(minio_cfg['bucket_w_in'], f_basic, f, tags=tags)
       log.info("Created '{0}' with etag '{1}'".format(
                 result.object_name, result.etag
               ))
@@ -50,17 +53,18 @@ if __name__ == '__main__':
       # Move processed file to archive
       if result.object_name == f_basic:
         # Create archive directory based on file's date
-        py, pm, pd = f_basic[0:4], f_basic[4:6], f_basic[6:8]
+        py, pm, pd = ts[0:4], ts[4:6], ts[6:8]
         target_path = os.path.join(cfg.archive_path, py, pm, pd)
         helper.make_sure_path_exists(target_path)
         shutil.move(f, target_path)
 
-    output = { 'total_processed': files_count,
+    output = { 'total_files': total_files,
+               'total_processed': total_files,
                'target_bucket': minio_cfg['bucket_w_in'] }
 
   else:
-    output = { 'total_processed': 0,
+    output = { 'total_files': total_files,
+               'total_processed': 0,
                'target_bucket': minio_cfg['bucket_w_in'] }
 
   print(json.dumps(output))
-
