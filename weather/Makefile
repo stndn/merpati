@@ -38,6 +38,9 @@ load-env:
 get-weather: $(VENV)
 	$(BIN)/$(PY) get_weather.py
 
+parse-weather: $(VENV)
+	$(BIN)/$(PY) parse_weather.py
+
 save-weather: $(VENV)
 	$(BIN)/$(PY) save_weather.py
 
