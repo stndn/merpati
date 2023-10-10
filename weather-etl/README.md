@@ -1,17 +1,18 @@
-# Merpati - Weather
+# Merpati - Weather ETL
 
-Retrieve and save weather information as provided by [Open Meteo API][url-open-meteo].
+Extract, Transform, and Load weather information as provided by [Open Meteo API][url-open-meteo] into S3 storage.
 
 ## Introduction
 
-The weather component of `Merpati` is a proof-of-concept application to complement [Garudata][url-garudata], the showcase of end-to-end data platform.
+The weather-ETL component of `Merpati` is a proof-of-concept application to complement [Garudata][url-garudata], the showcase the ETL process of data platform. It is part of the bigger end-to-end data platform showcase.
 
-It is built upon simple components where data may be downloaded, generated, and stored as part of data source.
+This component contains simplified modules where data may be downloaded, generated, processed, and stored as part of data source.
 
 
 The weather component consists of two modules:
 1. Get-weather: Integrates with Open-Meteo's API using Python's `requests` to download weather information for locations defined in [config/locations.json][url-config-locations].
-2. Save-weather: Stores the retrieved weather information into object store
+1. Process-weather: Extract the weather data into headers, current weather, hourly weather, and the units information into separate Parquet files
+1. Save-weather: Stores the retrieved weather information into object store
 
 For the object store, we will use MinIO.
 
@@ -47,11 +48,15 @@ make get-weather
 This will connect to the Open Meteo API and download the weather information as defined in the script. The output will be saved in the `output` directory.
 
 
+To further process the weather data into multiple Parquet files, execute:
+```
+make process-weather
+```
 
-### Workflow
-
-1. API calls will be initiated via `get-weather` to get the latest weather data, which is saved as Parquet files in local (host) filesystem
-1. A separate module `save-weather` will save the Parquet files into S3 bucket hosted in MinIO server
+Finally, save the files into S3:
+```
+make save-weather
+```
 
 
 ## Additional information
