@@ -46,7 +46,7 @@ Table current_weathers {
 
 Ref: current_weathers.weathercode > wmo_codes.code
 
-Table predicted_weathers {
+Table weather_forecasts {
   id INTEGER [PRIMARY KEY, increment]
   uuid VARCHAR(32) [NOT NULL]
   location_name VARCHAR(64) [NOT NULL]
@@ -60,8 +60,6 @@ Table predicted_weathers {
   timezone_short VARCHAR(16) [NOT NULL]
   utc_offset_seconds INTEGER [NOT NULL]
   elevation REAL [NOT NULL]
-  forecast_timestamp TIMESTAMP [NOT NULL]
-  forecast_timestamp_utc TIMESTAMP [NOT NULL]
   temperature_2m_c REAL [NOT NULL]
   temperature_2m_f REAL [NOT NULL]
   apparent_temperature_c REAL [NOT NULL]
@@ -76,6 +74,8 @@ Table predicted_weathers {
   precipitation_mm REAL [NOT NULL]
   precipitation_in REAL [NOT NULL]
   weathercode SMALLINT [NOT NULL]
+  forecast_timestamp TIMESTAMP [NOT NULL]
+  forecast_timestamp_utc TIMESTAMP [NOT NULL]
   is_day boolean [NOT NULL]
   data_timestamp TIMESTAMP [NOT NULL]
   data_timestamp_utc TIMESTAMP [NOT NULL]
@@ -83,5 +83,5 @@ Table predicted_weathers {
   updated_at TIMESTAMP [NOT NULL, DEFAULT: `CURRENT_TIMESTAMP AT TIME ZONE 'UTC'`]
 }
 
-Ref: wmo_codes.code < predicted_weathers.weathercode
+Ref: wmo_codes.code < weather_forecasts.weathercode
 
