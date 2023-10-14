@@ -74,7 +74,7 @@ class CurrentWeather(Base):
 
 
 class WeatherForecast(Base):
-  __tablename__             = 'weather_forecast'
+  __tablename__             = 'weather_forecasts'
   id                        = sa.Column(sa.Integer, sa.Identity(always=True), primary_key=True)
   uuid                      = sa.Column(sa.String(32), nullable=False)
   location_name             = sa.Column(sa.String(64), nullable=False)
