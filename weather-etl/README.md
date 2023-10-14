@@ -70,7 +70,7 @@ make save-weather
 
 ## Additional information
 
-Open-Meteo is an open-source weather API and offers free access for non-commercial use.
+[Open-Meteo][url-open-meteo] is an open-source weather API and offers free access for non-commercial use.
 
 
 <!-- Links -->
