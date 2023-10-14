@@ -2,6 +2,7 @@ from typing import Any
 from datetime import datetime
 
 import sqlalchemy as sa
+from sqlalchemy.sql import func
 from sqlalchemy.ext.declarative import declarative_base
 
 
@@ -25,19 +26,50 @@ Base: Any = declarative_base(cls=BaseModel)
 
 class WmoCode(Base):
   __tablename__ = 'wmo_codes'
-  id            = sa.Column(sa.Integer, sa.Identity(always=True), primary_key=True)
+  id            = sa.Column(sa.SmallInteger, sa.Identity(always=True), primary_key=True)
   code          = sa.Column(sa.SmallInteger, nullable=False)
   description   = sa.Column(sa.String(40), nullable=False)
-  created_at    = sa.Column(sa.DateTime, nullable=False, default=datetime.utcnow)
-  updated_at    = sa.Column(sa.DateTime, nullable=False, default=datetime.utcnow)
+  created_at    = sa.Column(sa.TIMESTAMP(timezone=True), nullable=False, server_default=func.now())
+  updated_at    = sa.Column(sa.TIMESTAMP(timezone=True), nullable=False, server_default=func.now())
 
 
 class WeatherUnit(Base):
   __tablename__ = 'weather_units'
-  id            = sa.Column(sa.Integer, sa.Identity(always=True), primary_key=True)
+  id            = sa.Column(sa.SmallInteger, sa.Identity(always=True), primary_key=True)
   unit_type     = sa.Column(sa.String(16), nullable=False)
   unit_code     = sa.Column(sa.String(4), nullable=False)
   unit          = sa.Column(sa.String(10), nullable=False)
-  created_at    = sa.Column(sa.DateTime, nullable=False, default=datetime.utcnow)
-  updated_at    = sa.Column(sa.DateTime, nullable=False, default=datetime.utcnow)
+  created_at    = sa.Column(sa.TIMESTAMP(timezone=True), nullable=False, server_default=func.now())
+  updated_at    = sa.Column(sa.TIMESTAMP(timezone=True), nullable=False, server_default=func.now())
+
+
+class CurrentWeather(Base):
+  __tablename__       = 'current_weathers'
+  id                  = sa.Column(sa.Integer, sa.Identity(always=True), primary_key=True)
+  uuid                = sa.Column(sa.String(32), nullable=False)
+  location_name       = sa.Column(sa.String(64), nullable=False)
+  location_country    = sa.Column(sa.String(64), nullable=False)
+  location_latitude   = sa.Column(sa.Numeric(11, 8), nullable=False)
+  location_longitude  = sa.Column(sa.Numeric(11, 8), nullable=False)
+  data_latitude       = sa.Column(sa.Numeric(11, 8), nullable=False)
+  data_longitude      = sa.Column(sa.Numeric(11, 8), nullable=False)
+  distance            = sa.Column(sa.REAL, nullable=False)
+  timezone            = sa.Column(sa.String(32), nullable=False)
+  timezone_short      = sa.Column(sa.String(16), nullable=False)
+  utc_offset_seconds  = sa.Column(sa.Integer, nullable=False)
+  elevation           = sa.Column(sa.REAL, nullable=False)
+  temperature_c       = sa.Column(sa.REAL, nullable=False)
+  temperature_f       = sa.Column(sa.REAL, nullable=False)
+  windspeed_kmh       = sa.Column(sa.REAL, nullable=False)
+  windspeed_ms        = sa.Column(sa.REAL, nullable=False)
+  windspeed_mph       = sa.Column(sa.REAL, nullable=False)
+  windspeed_kn        = sa.Column(sa.REAL, nullable=False)
+  winddirection       = sa.Column(sa.REAL, nullable=False)
+  is_day              = sa.Column(sa.Boolean, nullable=False)
+  weathercode         = sa.Column(sa.SmallInteger, nullable=False)
+  data_timestamp      = sa.Column(sa.TIMESTAMP(timezone=True), nullable=False)
+  data_timestamp_utc  = sa.Column(sa.TIMESTAMP(timezone=True), nullable=False)
+  created_at          = sa.Column(sa.TIMESTAMP(timezone=True), nullable=False, server_default=func.now())
+  updated_at          = sa.Column(sa.TIMESTAMP(timezone=True), nullable=False, server_default=func.now())
+
 
