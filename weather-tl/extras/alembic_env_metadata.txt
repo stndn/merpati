@@ -1,0 +1,6 @@
+
+# Additional settings inserted to work with our model
+from wtl import models
+from wtl.config import get_settings
+target_metadata = models.Base.metadata
+config.set_main_option('sqlalchemy.url', str(get_settings().database_url))
