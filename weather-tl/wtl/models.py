@@ -65,16 +65,16 @@ class CurrentWeather(Base):
   windspeed_mph       = sa.Column(sa.REAL, nullable=False)
   windspeed_kn        = sa.Column(sa.REAL, nullable=False)
   winddirection       = sa.Column(sa.REAL, nullable=False)
-  is_day              = sa.Column(sa.Boolean, nullable=False)
   weathercode         = sa.Column(sa.SmallInteger, sa.ForeignKey('wmo_codes.code'), nullable=False)
+  is_day              = sa.Column(sa.Boolean, nullable=False)
   data_timestamp      = sa.Column(sa.TIMESTAMP(timezone=True), nullable=False)
   data_timestamp_utc  = sa.Column(sa.TIMESTAMP(timezone=True), nullable=False)
   created_at          = sa.Column(sa.TIMESTAMP(timezone=True), nullable=False, server_default=func.now())
   updated_at          = sa.Column(sa.TIMESTAMP(timezone=True), nullable=False, server_default=func.now())
 
 
-class PredictedWeather(Base):
-  __tablename__             = 'predicted_weathers'
+class WeatherForecast(Base):
+  __tablename__             = 'weather_forecast'
   id                        = sa.Column(sa.Integer, sa.Identity(always=True), primary_key=True)
   uuid                      = sa.Column(sa.String(32), nullable=False)
   location_name             = sa.Column(sa.String(64), nullable=False)
@@ -88,8 +88,6 @@ class PredictedWeather(Base):
   timezone_short            = sa.Column(sa.String(16), nullable=False)
   utc_offset_seconds        = sa.Column(sa.Integer, nullable=False)
   elevation                 = sa.Column(sa.REAL, nullable=False)
-  forecast_timestamp        = sa.Column(sa.TIMESTAMP(timezone=True), nullable=False)
-  forecast_timestamp_utc    = sa.Column(sa.TIMESTAMP(timezone=True), nullable=False)
   temperature_2m_c          = sa.Column(sa.REAL, nullable=False)
   temperature_2m_f          = sa.Column(sa.REAL, nullable=False)
   apparent_temperature_c    = sa.Column(sa.REAL, nullable=False)
@@ -103,8 +101,10 @@ class PredictedWeather(Base):
   precipitation_probability = sa.Column(sa.REAL, nullable=False)
   precipitation_mm          = sa.Column(sa.REAL, nullable=False)
   precipitation_in          = sa.Column(sa.REAL, nullable=False)
-  is_day                    = sa.Column(sa.Boolean, nullable=False)
   weathercode               = sa.Column(sa.SmallInteger, sa.ForeignKey('wmo_codes.code'), nullable=False)
+  forecast_timestamp        = sa.Column(sa.TIMESTAMP(timezone=True), nullable=False)
+  forecast_timestamp_utc    = sa.Column(sa.TIMESTAMP(timezone=True), nullable=False)
+  is_day                    = sa.Column(sa.Boolean, nullable=False)
   data_timestamp            = sa.Column(sa.TIMESTAMP(timezone=True), nullable=False)
   data_timestamp_utc        = sa.Column(sa.TIMESTAMP(timezone=True), nullable=False)
   created_at                = sa.Column(sa.TIMESTAMP(timezone=True), nullable=False, server_default=func.now())
