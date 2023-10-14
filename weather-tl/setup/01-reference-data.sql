@@ -31,12 +31,16 @@ INSERT INTO wmo_codes (code, description) VALUES
 
 
 INSERT INTO weather_units (unit_type, unit_code, unit) VALUES
-  ('temperature',   'c',    '°C'),
-  ('temperature',   'f',    '°F'),
-  ('windspeed',     'kmh',  'Km/h'),
-  ('windspeed',     'ms',   'm/s'),
-  ('windspeed',     'mph',  'Mph'),
-  ('windspeed',     'kn',   'Knots'),
-  ('winddirection', 'deg',  '°')
+  ('temperature',               'c',    '°C'),
+  ('temperature',               'f',    '°F'),
+  ('windspeed',                 'kmh',  'Km/h'),
+  ('windspeed',                 'ms',   'm/s'),
+  ('windspeed',                 'mph',  'Mph'),
+  ('windspeed',                 'kn',   'Knots'),
+  ('winddirection',             'deg',  '°'),
+  ('relativehumidity',          'pct',  '%'),
+  ('probability',               'pct',  '%'),
+  ('precipitation',             'mm',   'Millimeter'),
+  ('precipitation',             'in',   'Inch')
   ;
 
