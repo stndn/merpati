@@ -44,8 +44,6 @@ Table current_weathers {
   updated_at TIMESTAMP [NOT NULL, DEFAULT: `CURRENT_TIMESTAMP AT TIME ZONE 'UTC'`]
 }
 
-Ref: current_weathers.weathercode > wmo_codes.code
-
 Table weather_forecasts {
   id INTEGER [PRIMARY KEY, increment]
   uuid VARCHAR(32) [NOT NULL]
@@ -82,6 +80,3 @@ Table weather_forecasts {
   created_at TIMESTAMP [NOT NULL, DEFAULT: `CURRENT_TIMESTAMP AT TIME ZONE 'UTC'`]
   updated_at TIMESTAMP [NOT NULL, DEFAULT: `CURRENT_TIMESTAMP AT TIME ZONE 'UTC'`]
 }
-
-Ref: wmo_codes.code < weather_forecasts.weathercode
-

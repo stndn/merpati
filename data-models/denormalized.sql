@@ -85,7 +85,3 @@ CREATE TABLE "weather_forecasts" (
   "updated_at" TIMESTAMP NOT NULL DEFAULT (CURRENT_TIMESTAMP AT TIME ZONE 'UTC')
 );
 
-ALTER TABLE "current_weathers" ADD FOREIGN KEY ("weathercode") REFERENCES "wmo_codes" ("code");
-
-ALTER TABLE "weather_forecasts" ADD FOREIGN KEY ("weathercode") REFERENCES "wmo_codes" ("code");
-
