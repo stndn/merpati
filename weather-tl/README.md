@@ -85,8 +85,9 @@ For faster insertion from Panda's DataFrame to PostgreSQL, refer to the methods 
 [url-apache-spark]: https://spark.apache.org/ "Apache Spark"
 [url-garudata-technology]: https://github.com/stndn/garudata#technology
 [url-python]: https://www.python.org/
+[url-pyenv]: https://github.com/pyenv/pyenv
 [url-venv]: https://docs.python.org/3/library/venv.html
-[url-requirements]: /merpati/weather-tl/requirements.txt
+[url-requirements]: /weather-tl/requirements.txt
 [url-dotenv-sample]: /weather-tl/.env.sample
 [url-makefile]: /weather-tl/Makefile
 [url-alembic]: https://alembic.sqlalchemy.org/en/latest/ "Alembic"
