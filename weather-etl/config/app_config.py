@@ -12,10 +12,13 @@ class Config(object):
 
   open_meteo_weather_url = ("https://api.open-meteo.com/v1/forecast?"
                             "latitude={lat}&longitude={long}&"
+                            "current=temperature_2m,relativehumidity_2m,"
+                            "apparent_temperature,precipitation,weathercode,"
+                            "windspeed_10m,winddirection_10m,is_day&"
                             "hourly=temperature_2m,relativehumidity_2m,"
                             "apparent_temperature,precipitation_probability,"
                             "precipitation,weathercode,windspeed_10m,"
-                            "winddirection_10m,is_day&current_weather=true&"
+                            "winddirection_10m,is_day&"
                             "timezone=auto&forecast_days=3"
                            )
 
