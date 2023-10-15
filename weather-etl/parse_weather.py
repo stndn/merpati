@@ -20,7 +20,7 @@ def get_weather_header(data:json) -> dict:
                   'timezone':               data['timezone'],
                   'timezone_abbreviation':  data['timezone_abbreviation'],
                   'elevation' :             data['elevation'],
-                  'data_timestamp':         data['current_weather']['time'],
+                  'data_timestamp':         data['current']['time'],
                  }
   return pd.json_normalize(grouped_data)
 
@@ -33,9 +33,9 @@ def get_weather_units(data:json) -> dict:
                   'location_longitude':     data['location_longitude'],
                   'latitude':               data['latitude'],
                   'longitude':              data['longitude'],
-                  'current_weather_units':  data['current_weather_units'],
+                  'current_units':          data['current_units'],
                   'hourly_units':           data['hourly_units'],
-                  'data_timestamp':         data['current_weather']['time'],
+                  'data_timestamp':         data['current']['time'],
                  }
   return pd.json_normalize(grouped_data)
 
@@ -48,9 +48,9 @@ def get_weather_current(data:json) -> dict:
                   'location_longitude':     data['location_longitude'],
                   'latitude':               data['latitude'],
                   'longitude':              data['longitude'],
-                  'data_timestamp':         data['current_weather']['time'],
+                  'data_timestamp':         data['current']['time'],
                  }
-  for k, v in data['current_weather'].items():
+  for k, v in data['current'].items():
     grouped_data[k] = v
   return pd.json_normalize(grouped_data)
 
@@ -63,7 +63,7 @@ def get_weather_hourly(data:json) -> dict:
                   'location_longitude':     data['location_longitude'],
                   'latitude':               data['latitude'],
                   'longitude':              data['longitude'],
-                  'data_timestamp':         data['current_weather']['time'],
+                  'data_timestamp':         data['current']['time'],
                  }
   for k, v in data['hourly'].items():
     grouped_data[k] = v
