@@ -39,7 +39,12 @@ if __name__ == '__main__':
     tags["Content"] = "Weather data"
 
     for f in files_list:
-      f_basic = os.path.basename(f)
+      if f.endswith(".parquet"):
+        f_basic = "{}/{}".format('parquet', os.path.basename(f))
+      elif f.endswith(".json"):
+        f_basic = "{}/{}".format('json', os.path.basename(f))
+      else:
+        f_basic = os.path.basename(f)
       w, lat, long, ts  = f_basic.split('_')
       tags['latitude']  = lat
       tags['longitude'] = long
