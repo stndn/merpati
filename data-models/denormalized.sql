@@ -72,7 +72,7 @@ CREATE TABLE "weather_forecasts" (
   "windspeed_10m_ms" REAL NOT NULL,
   "windspeed_10m_mph" REAL NOT NULL,
   "windspeed_10m_kn" REAL NOT NULL,
-  "winddirection_10" REAL NOT NULL,
+  "winddirection_10m" REAL NOT NULL,
   "relativehumidity_2m" REAL NOT NULL,
   "precipitation_probability" REAL NOT NULL,
   "precipitation_mm" REAL NOT NULL,
