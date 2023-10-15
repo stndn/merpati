@@ -28,7 +28,8 @@ CREATE TABLE "current_weathers" (
   "location_longitude" NUMERIC(11,8) NOT NULL,
   "data_latitude" NUMERIC(11,8) NOT NULL,
   "data_longitude" NUMERIC(11,8) NOT NULL,
-  "distance" REAL NOT NULL,
+  "distance_km" REAL NOT NULL,
+  "distance_mi" REAL NOT NULL,
   "timezone" VARCHAR(32) NOT NULL,
   "timezone_short" VARCHAR(16) NOT NULL,
   "utc_offset_seconds" INTEGER NOT NULL,
@@ -57,7 +58,8 @@ CREATE TABLE "weather_forecasts" (
   "location_longitude" NUMERIC(11,8) NOT NULL,
   "data_latitude" NUMERIC(11,8) NOT NULL,
   "data_longitude" NUMERIC(11,8) NOT NULL,
-  "distance" REAL NOT NULL,
+  "distance_km" REAL NOT NULL,
+  "distance_mi" REAL NOT NULL,
   "timezone" VARCHAR(32) NOT NULL,
   "timezone_short" VARCHAR(16) NOT NULL,
   "utc_offset_seconds" INTEGER NOT NULL,
@@ -84,4 +86,3 @@ CREATE TABLE "weather_forecasts" (
   "created_at" TIMESTAMP NOT NULL DEFAULT (CURRENT_TIMESTAMP AT TIME ZONE 'UTC'),
   "updated_at" TIMESTAMP NOT NULL DEFAULT (CURRENT_TIMESTAMP AT TIME ZONE 'UTC')
 );
-
