@@ -8,7 +8,7 @@ The weather-TL component of `Merpati` is a proof-of-concept application to compl
 
 This component contains simplified modules where stored data are transformed and stored as dataset for use by data consumers, both application and reporting tool.
 
-The Weather-TL component consists of three major sub-components:
+The Weather-TL component consists of two major sub-components:
 1. Modules to transform and load the data into denormalized datasets suitable for reporting purpose
 1. Modules to transform and load the data into normalized datasets suitable for consumptions by API and applications
 
@@ -45,6 +45,20 @@ To simplify the setup and script execution, most of the commands are placed in [
 To download and install all the required libraries (as defined in [requirements.txt][url-requirements]):
 ```
 make venv
+```
+
+
+For the first component, used to transform and load the data into denormalized datasets, the commands are as follows:
+```
+# Extract JSON files to get and process current weather information and store in database
+make current-weather-dataset
+
+# Extract JSON files to get and process hourly weather forecasts and store in database
+make hourly-weather-dataset
+
+# The two commands above will create list of objects in S3 that have been processed
+# The last command will move the objects to archive based on the list created above
+make archive-weather-json
 ```
 
 
