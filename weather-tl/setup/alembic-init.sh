@@ -10,7 +10,7 @@ else
 
   if [ "${init_status}" -eq 0 ]; then
     # Update alembic/env.py to include the models for our db
-    sed -e '/^target_metadata = None$/r extras/alembic_env_metadata.txt' \
+    sed -e '/^target_metadata = None$/r setup/alembic_env_metadata.txt' \
         -e 's/^target_metadata = None$/# target_metadata = None/' \
         alembic/env.py > /tmp/alembic-env.py
     mv /tmp/alembic-env.py alembic/env.py
