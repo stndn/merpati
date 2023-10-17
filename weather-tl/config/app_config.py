@@ -8,6 +8,7 @@ class Config(object):
   TESTING = False
   app_version = "v1"
   APP_PATH = os.path.abspath(os.path.join(os.path.dirname(os.path.abspath(__file__)), os.pardir))
+  tmp_path   = os.path.abspath(os.path.join(APP_PATH, 'tmp/'))
 
 class Development(Config):
   DEBUG = True
