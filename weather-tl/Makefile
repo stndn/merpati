@@ -43,6 +43,9 @@ current-weather-dataset: $(VENV)
 hourly-weather-dataset: $(VENV)
 	$(BIN)/$(PY) create_hourly_weather_dataset.py
 
+archive-weather-json: $(VENV)
+	$(BIN)/$(PY) archive_weather_json.py
+
 
 # References:
 # - https://earthly.dev/blog/python-makefile/
