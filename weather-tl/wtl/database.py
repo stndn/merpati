@@ -14,5 +14,6 @@ def create_session() -> scoped_session:
   )
   return Session
 
-def create_raw():
-  return engine.raw_connection()
+def create_cursor(session:scoped_session):
+  return session.connection().connection.cursor()
+
