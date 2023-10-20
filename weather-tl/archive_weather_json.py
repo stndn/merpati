@@ -58,7 +58,7 @@ if __name__ == '__main__':
         failed_list.append(obj)
 
     total_copied = len(del_list)
-    log.info("Copied total of {} files. Proceed to remove the files from original bucket")
+    log.info("Copied total of {} files. Proceed to remove the files from original bucket", total_copied)
 
     remove_errors = client.remove_objects(minio_cfg['bucket_w_in'], del_list)
     for err in remove_errors:

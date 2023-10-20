@@ -48,20 +48,6 @@ make venv
 ```
 
 
-For the first component, used to transform and load the data into denormalized datasets, the commands are as follows:
-```
-# Extract JSON files to get and process current weather information and store in database
-make current-weather-dataset
-
-# Extract JSON files to get and process hourly weather forecasts and store in database
-make hourly-weather-dataset
-
-# The two commands above will create list of objects in S3 that have been processed
-# The last command will move the objects to archive based on the list created above
-make archive-weather-json
-```
-
-
 ### Database setup
 
 For the database setup, we use [SQLAlchemy's Alembic][url-alembic] to manage the database migrations.
@@ -83,7 +69,24 @@ The commands above will auto generate the database upgrade and downgrade script,
 
 Once that is done, make sure to feed the reference table by loading the [reference data][url-reference-data] into the newly-created database (adjust the username/hostname/dbname as appropriate):
 ```
-psql -U db_warehouse_user -h 127.0.0.1 -f setup/01-reference-data.sql -d db_warehouse`
+psql -U db_warehouse_user -h 127.0.0.1 -f setup/01-reference-data.sql -d db_warehouse
+```
+
+
+### Usage
+
+
+For the first component, used to transform and load the data into denormalized datasets, the commands are as follows:
+```
+# Extract JSON files to get and process current weather information and store in database
+make current-weather-dataset
+
+# Extract JSON files to get and process hourly weather forecasts and store in database
+make hourly-weather-dataset
+
+# The two commands above will create list of objects in S3 that have been processed
+# The last command will move the objects to archive based on the list created above
+make archive-weather-json
 ```
 
 
