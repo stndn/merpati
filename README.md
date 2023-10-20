@@ -6,12 +6,12 @@ The application consists of multiple components that make use of different tools
 
 ## Application Components
 
-[Weather][url-weather]: Component to retrieve weather information from Open Meteo API, to be stored in local file before saved into S3 bucket.
-
-(More to come as the development continues)
+[Weather-ETL][url-weather-etl]: Component to retrieve weather information from Open Meteo API, which is minimally transformed and saved as local files before being stored into S3 object storage.
+[Weather-TL][url-weather-tl]: Component to transform the weather data files stored in S3 object storagea and store the data into PostgreSQL data warehouse.
 
 
 <!-- Links -->
 [url-garudata]: https://github.com/stndn/garudata "Garudata - The data platform project"
-[url-weather]: /weather "The weather data retriever"
+[url-weather-etl]: /weather-etl "The weather data retriever, transformer, and loader"
+[url-weather-tl]: /weather-tl "The weather data retriever"
 
