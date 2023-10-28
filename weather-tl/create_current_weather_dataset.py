@@ -77,8 +77,12 @@ if __name__ == '__main__':
 
       ### Convert time to proper timezones
       df['data_timestamp'] = pd.to_datetime(df['data_timestamp'])
-      df['data_timestamp'] = (df.apply(lambda x: x['data_timestamp'].tz_localize(tz=data['timezone']), axis=1))
+      df['data_timestamp'] = (df.apply(lambda x: x['data_timestamp'].tz_localize(tz=data['timezone'], ambiguous='NaT'), axis=1))
       df['data_timestamp_utc'] = (df.apply(lambda x: x['data_timestamp'].tz_convert('UTC'), axis=1))
+
+      # Temporary fix for issue #24:
+      # Drop rows with missing/duplicate time (marked as NaT) due to DST/non-DST switch
+      df = df.dropna()
 
       cols = ['uuid', 'location_name', 'location_country', 'location_latitude',
               'location_longitude', 'data_latitude', 'data_longitude', 'distance_km',

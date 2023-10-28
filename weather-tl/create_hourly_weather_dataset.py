@@ -76,12 +76,17 @@ if __name__ == '__main__':
 
       ### Convert time to utc
       df['forecast_timestamp'] = pd.to_datetime(df['forecast_timestamp'])
-      df['forecast_timestamp'] = (df.apply(lambda x: x['forecast_timestamp'].tz_localize(tz=data['timezone']), axis=1))
+      df['forecast_timestamp'] = (df.apply(lambda x: x['forecast_timestamp'].tz_localize(tz=data['timezone'], ambiguous='NaT'), axis=1))
       df['forecast_timestamp_utc'] = (df.apply(lambda x: x['forecast_timestamp'].tz_convert('UTC'), axis=1))
 
       df['data_timestamp'] = pd.to_datetime(df['data_timestamp'])
-      df['data_timestamp'] = (df.apply(lambda x: x['data_timestamp'].tz_localize(tz=data['timezone']), axis=1))
+      df['data_timestamp'] = (df.apply(lambda x: x['data_timestamp'].tz_localize(tz=data['timezone'], ambiguous='NaT'), axis=1))
       df['data_timestamp_utc'] = (df.apply(lambda x: x['data_timestamp'].tz_convert('UTC'), axis=1))
+
+      # Temporary fix for issue #24:
+      # Drop rows with missing/duplicate time (marked as NaT) due to DST/non-DST switch
+      df = df.dropna()
+
 
       # Rename and reorder the data columns
       df.rename({ 'latitude'              : 'data_latitude',
